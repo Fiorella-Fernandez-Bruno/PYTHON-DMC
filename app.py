@@ -1,1 +1,1 @@
-st.title("Especialización Python for Analytics")
+title("Especialización Python for Analytics")
