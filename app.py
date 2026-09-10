@@ -1,1 +1,2 @@
-title("Especialización Python for Analytics")
+import streamlit as st
+st.title("Especialización Python for Analytics")
