@@ -2,7 +2,9 @@ import streamlit as st
 
 st.title("Especialización Python for Analytics")
 st.sidebar.title("Parámetros")
- modulos = st.selectbox("Seleccione el módulo",["Listas","Arreglos","Funciones","POO"])
+st.write("Elaborado por Fiorella Fernández")
+
+modulos = st.selectbox("Seleccione el módulo",["Listas","Arreglos","Funciones","POO"])
 
 if modulos == "Listas":
  st.write("Te encuentras en el módulo de Listas")
@@ -13,5 +15,4 @@ elif modulos == "Funciones":
 else:
   st.write("Te encuentras en el módulo de POO")
  
-st.write("Elaborado por Fiorella Fernández")
 
