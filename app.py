@@ -11,6 +11,7 @@ if modulos == "Listas":
  valor_inicial = st.number_input("Ingresa tu valor inicial del rango",value=0)
  valor_final = st.number_input("Ingresa tu valor final del rango",value=10)
  Lista = list(range(valor_inicial,valor_final))
+ st.write(Lista)
 
 
 elif modulos == "Arreglos":
