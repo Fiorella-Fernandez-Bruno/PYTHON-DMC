@@ -21,6 +21,8 @@ if modulos == "Listas":
 elif modulos == "Arreglos":
   st.write("Te encuentras en el módulo de Arreglos")
   cantidad = st.slider("Seleccione un valor del rango", min_value = 1, max_value = 100, value = 20)
+  arreglo = np.arange(cantidad)
+  st.write(arreglo)
 elif modulos == "Funciones":
   st.write("Te encuentras en el módulo de Funciones")
 else:
