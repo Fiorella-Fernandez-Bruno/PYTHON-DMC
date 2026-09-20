@@ -9,10 +9,10 @@ st.set_page_config(page_title="Proyecto 1 - Python Fundamentals", page_icon="�
 st.sidebar.image("DMC.png")
 st.sidebar.title("Navegación")
 seccion = st.sidebar.selectbox("Selecciona una sección", ["Home", "Ejercicio 1", "Ejercicio 2", "Ejercicio 3", "Ejercicio 4"])
-st.write("Elaborado por Fiorella Fernandez")
 if seccion == "Home":
     st.title("Proyecto Aplicado - Python Fundamentals")
     st.subheader("Especialización en Python for Analytics")
+    st.write("Elaborado por Fiorella Fernandez")
 
     st.image("Fiorella.jpeg", width=200)
 
