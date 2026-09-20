@@ -8,4 +8,28 @@ from librería_clases_proyecto1 import InventarioProducto
 st.set_page_config(page_title="Proyecto 1 - Python Fundamentals", page_icon="🐍")
 st.sidebar.title("Navegación")
 seccion = st.sidebar.selectbox("Selecciona una sección", ["Home", "Ejercicio 1", "Ejercicio 2", "Ejercicio 3", "Ejercicio 4"])
-st.sidebar.write("Elaborado por Fiorella Fernandez")
+st.write("Elaborado por Fiorella Fernandez")
+if seccion == "Home":
+    st.title("Proyecto Aplicado - Python Fundamentals")
+    st.subheader("Especialización en Python for Analytics")
+
+    st.image("Fiorella.jpeg", width=200)
+    st.sidebar.image("DMC.png")
+
+    st.markdown("**Nombre completo:** Fiorella Fernandez Bruno")
+    st.markdown("**Módulo:** Módulo 1 - Python Fundamentals")
+    st.markdown("**Año:** 2026")
+
+    st.markdown("""
+    ### Descripción del proyecto
+    Esta aplicación integra los conceptos fundamentales del Módulo 1 del curso:
+    variables, estructuras de datos, control de flujo, funciones, programación
+    funcional y programación orientada a objetos (POO), mediante una interfaz
+    interactiva construida con **Streamlit**.
+
+    ### 🛠️ Tecnologías utilizadas
+    - Python 3
+    - Streamlit
+    - NumPy
+    - Pandas
+    """)
