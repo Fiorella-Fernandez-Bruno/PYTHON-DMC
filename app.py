@@ -27,7 +27,7 @@ if seccion == "Home":
     funcional y programación orientada a objetos (POO), mediante una interfaz
     interactiva construida con **Streamlit**.
 
-    ### 🛠️ Tecnologías utilizadas
+    ### Tecnologías utilizadas
     - Python 3
     - Streamlit
     - NumPy
