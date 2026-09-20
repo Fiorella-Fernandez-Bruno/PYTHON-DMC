@@ -119,3 +119,24 @@ elif seccion == "Ejercicio 3":
     costos = st.number_input("Costos (S/)", min_value=0.0, value=0.0, step=100.0)
     gastos_operativos = st.number_input("Gastos operativos (S/)", min_value=0.0, value=0.0, step=100.0)
     impuestos = st.number_input("Impuestos (S/)", min_value=0.0, value=0.0, step=100.0)
+    
+    if st.button("Calcular margen neto"):
+        try:
+            resultado = calcular_margen_neto(ingresos, costos, gastos_operativos, impuestos)
+            st.success(f"Margen neto: {resultado['margen_neto_pct']}%")
+            st.write(resultado)
+
+            registro = {
+                "Ingresos": ingresos,
+                "Costos": costos,
+                "Gastos operativos": gastos_operativos,
+                "Impuestos": impuestos,
+                **resultado
+            }
+            st.session_state.historico_margen.append(registro)
+        except ValueError as e:
+            st.error(str(e))
+
+    if st.session_state.historico_margen:
+        st.subheader("Histórico de resultados")
+        st.dataframe(pd.DataFrame(st.session_state.historico_margen))
