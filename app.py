@@ -74,3 +74,6 @@ elif seccion == "Ejercicio 1":
     else:
         st.info("Aún no has registrado movimientos.")
 
+elif seccion == "Ejercicio 2":
+    st.title("Ejercicio 2 - Registro con NumPy y DataFrame")
+    st.markdown("Registra productos y observa cómo la información se almacena en arreglos de NumPy antes de mostrarse en una tabla.")
