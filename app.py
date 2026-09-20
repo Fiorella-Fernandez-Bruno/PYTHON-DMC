@@ -140,3 +140,59 @@ elif seccion == "Ejercicio 3":
     if st.session_state.historico_margen:
         st.subheader("Histórico de resultados")
         st.dataframe(pd.DataFrame(st.session_state.historico_margen))
+
+elif seccion == "Ejercicio 4":
+    st.title("Ejercicio 4 - Clase InventarioProducto con CRUD")
+    st.markdown("Gestiona un inventario de productos usando la clase `InventarioProducto`: crear, leer, actualizar y eliminar registros.")
+
+    if "inventario" not in st.session_state:
+        st.session_state.inventario = {}
+
+    operacion = st.selectbox("Operación", ["Crear", "Leer", "Actualizar", "Eliminar"])
+
+    if operacion == "Crear":
+        st.subheader("Crear producto")
+        nombre = st.text_input("Nombre del producto", key="crear_nombre")
+        costo = st.number_input("Costo unitario", min_value=0.0, value=0.0, key="crear_costo")
+        precio = st.number_input("Precio unitario", min_value=0.0, value=0.0, key="crear_precio")
+        stock_actual = st.number_input("Stock actual", min_value=0, value=0, key="crear_stock_actual")
+        stock_minimo = st.number_input("Stock mínimo", min_value=0, value=0, key="crear_stock_minimo")
+
+        if st.button("Crear"):
+            try:
+                producto = InventarioProducto(nombre, costo, precio, stock_actual, stock_minimo)
+                st.session_state.inventario[nombre] = producto
+                st.success(f"Producto '{nombre}' creado.")
+            except ValueError as e:
+                st.error(str(e))
+
+    elif operacion == "Leer":
+        st.subheader("Inventario actual")
+        if st.session_state.inventario:
+            resumenes = [p.resumen() for p in st.session_state.inventario.values()]
+            st.dataframe(pd.DataFrame(resumenes))
+        else:
+            st.info("No hay productos registrados.")
+
+    elif operacion == "Actualizar":
+        st.subheader("Actualizar producto")
+        if st.session_state.inventario:
+            nombre_sel = st.selectbox("Selecciona un producto", list(st.session_state.inventario.keys()))
+            producto = st.session_state.inventario[nombre_sel]
+
+            nuevo_stock = st.number_input("Nuevo stock actual", min_value=0, value=int(producto.stock_actual))
+            if st.button("Actualizar"):
+                producto.stock_actual = nuevo_stock
+                st.success(f"Stock de '{nombre_sel}' actualizado a {nuevo_stock}.")
+        else:
+            st.info("No hay productos para actualizar.")
+
+    elif operacion == "Eliminar":
+        st.subheader("Eliminar producto")
+        if st.session_state.inventario:
+            nombre_sel = st.selectbox("Selecciona un producto a eliminar", list(st.session_state.inventario.keys()))
+            if st.button("Eliminar"):
+                del st.session_state.inventario[nombre_sel]
+                st.success(f"Producto '{nombre_sel}' eliminado.")
+        else:
+            st.info("No hay productos para eliminar.")
