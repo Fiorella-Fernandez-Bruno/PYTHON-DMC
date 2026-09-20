@@ -33,3 +33,8 @@ if seccion == "Home":
     - NumPy
     - Pandas
     """)
+
+elif seccion == "Ejercicio 1":
+    st.title("Ejercicio 1 - Flujo de caja con listas")
+    st.markdown("Registra tus movimientos financieros (ingresos y gastos) y visualiza el flujo de caja resultante.")
+
