@@ -44,4 +44,13 @@ elif seccion == "Ejercicio 1":
     concepto = st.text_input("Concepto")
     tipo = st.selectbox("Tipo de movimiento", ["Ingreso", "Gasto"])
     valor = st.number_input("Valor", min_value=0.0, value=0.0, step=0.01)
+   
+    if st.button("Agregar movimiento"):
+        if concepto.strip() == "":
+            st.error("Ingresa un concepto válido.")
+        elif valor <= 0:
+            st.error("El valor debe ser mayor que cero.")
+        else:
+            st.session_state.movimientos.append({"Concepto": concepto, "Tipo": tipo, "Valor": valor})
+            st.success(f"Movimiento '{concepto}' agregado correctamente.")
 
