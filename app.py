@@ -77,3 +77,11 @@ elif seccion == "Ejercicio 1":
 elif seccion == "Ejercicio 2":
     st.title("Ejercicio 2 - Registro con NumPy y DataFrame")
     st.markdown("Registra productos y observa cómo la información se almacena en arreglos de NumPy antes de mostrarse en una tabla.")
+    
+    if "productos" not in st.session_state:
+        st.session_state.productos = np.empty((0, 5), dtype=object)
+
+    nombre_prod = st.text_input("Nombre del producto")
+    categoria = st.selectbox("Categoría", ["Alimentos", "Bebidas", "Limpieza", "Otros"])
+    precio = st.number_input("Precio unitario", min_value=0.0, value=0.0, step=0.01)
+    cantidad = st.number_input("Cantidad", min_value=0, value=0, step=1)
