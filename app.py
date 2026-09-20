@@ -85,3 +85,22 @@ elif seccion == "Ejercicio 2":
     categoria = st.selectbox("Categoría", ["Alimentos", "Bebidas", "Limpieza", "Otros"])
     precio = st.number_input("Precio unitario", min_value=0.0, value=0.0, step=0.01)
     cantidad = st.number_input("Cantidad", min_value=0, value=0, step=1)
+    
+    if st.button("Agregar producto"):
+        if nombre_prod.strip() == "":
+            st.error("Ingresa un nombre de producto válido.")
+        else:
+            total = precio * cantidad
+            nuevo_registro = np.array([[nombre_prod, categoria, precio, cantidad, total]], dtype=object)
+            st.session_state.productos = np.vstack([st.session_state.productos, nuevo_registro])
+            st.success(f"Producto '{nombre_prod}' agregado correctamente.")
+
+    if st.session_state.productos.shape[0] > 0:
+        df_productos = pd.DataFrame(
+            st.session_state.productos,
+            columns=["Producto", "Categoría", "Precio", "Cantidad", "Total"]
+        )
+        st.subheader("Registro de productos")
+        st.dataframe(df_productos)
+    else:
+        st.info("Aún no has registrado productos.")
