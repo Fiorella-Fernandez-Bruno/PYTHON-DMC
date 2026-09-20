@@ -54,3 +54,16 @@ elif seccion == "Ejercicio 1":
             st.session_state.movimientos.append({"Concepto": concepto, "Tipo": tipo, "Valor": valor})
             st.success(f"Movimiento '{concepto}' agregado correctamente.")
 
+    if st.session_state.movimientos:
+        st.subheader("Movimientos registrados")
+        st.dataframe(st.session_state.movimientos)
+
+        total_ingresos = sum(m["Valor"] for m in st.session_state.movimientos if m["Tipo"] == "Ingreso")
+        total_gastos = sum(m["Valor"] for m in st.session_state.movimientos if m["Tipo"] == "Gasto")
+        saldo_final = total_ingresos - total_gastos
+
+        col1, col2, col3 = st.columns(3)
+        col1.metric("Total ingresos", f"S/ {total_ingresos:,.2f}")
+        col2.metric("Total gastos", f"S/ {total_gastos:,.2f}")
+        col3.metric("Saldo final", f"S/ {saldo_final:,.2f}")
+
