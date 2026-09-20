@@ -66,4 +66,11 @@ elif seccion == "Ejercicio 1":
         col1.metric("Total ingresos", f"S/ {total_ingresos:,.2f}")
         col2.metric("Total gastos", f"S/ {total_gastos:,.2f}")
         col3.metric("Saldo final", f"S/ {saldo_final:,.2f}")
+        
+        if saldo_final >= 0:
+            st.success("El flujo de caja está a favor.")
+        else:
+            st.error("El flujo de caja está en contra.")
+    else:
+        st.info("Aún no has registrado movimientos.")
 
