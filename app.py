@@ -37,4 +37,11 @@ if seccion == "Home":
 elif seccion == "Ejercicio 1":
     st.title("Ejercicio 1 - Flujo de caja con listas")
     st.markdown("Registra tus movimientos financieros (ingresos y gastos) y visualiza el flujo de caja resultante.")
+    
+    if "movimientos" not in st.session_state:
+        st.session_state.movimientos = []
+
+    concepto = st.text_input("Concepto")
+    tipo = st.selectbox("Tipo de movimiento", ["Ingreso", "Gasto"])
+    valor = st.number_input("Valor", min_value=0.0, value=0.0, step=0.01)
 
