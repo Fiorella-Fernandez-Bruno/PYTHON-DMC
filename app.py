@@ -6,6 +6,7 @@ from libreria_funciones_proyecto1 import calcular_margen_neto
 from librería_clases_proyecto1 import InventarioProducto
 
 st.set_page_config(page_title="Proyecto 1 - Python Fundamentals", page_icon="🐍")
+st.sidebar.image("DMC.png")
 st.sidebar.title("Navegación")
 seccion = st.sidebar.selectbox("Selecciona una sección", ["Home", "Ejercicio 1", "Ejercicio 2", "Ejercicio 3", "Ejercicio 4"])
 st.write("Elaborado por Fiorella Fernandez")
@@ -14,7 +15,6 @@ if seccion == "Home":
     st.subheader("Especialización en Python for Analytics")
 
     st.image("Fiorella.jpeg", width=200)
-    st.sidebar.image("DMC.png")
 
     st.markdown("**Nombre completo:** Fiorella Fernandez Bruno")
     st.markdown("**Módulo:** Módulo 1 - Python Fundamentals")
