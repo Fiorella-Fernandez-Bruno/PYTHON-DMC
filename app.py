@@ -104,3 +104,18 @@ elif seccion == "Ejercicio 2":
         st.dataframe(df_productos)
     else:
         st.info("Aún no has registrado productos.")
+
+elif seccion == "Ejercicio 3":
+    st.title("Ejercicio 3 - Función externa: Margen Neto")
+    st.markdown("""
+    Esta sección usa la función **`calcular_margen_neto`** de la librería externa,
+    aplicada al tipo de cálculo que se usa en Control de Gestión y Planeamiento Financiero.
+    """)
+
+    if "historico_margen" not in st.session_state:
+        st.session_state.historico_margen = []
+
+    ingresos = st.number_input("Ingresos (S/)", min_value=0.0, value=0.0, step=100.0)
+    costos = st.number_input("Costos (S/)", min_value=0.0, value=0.0, step=100.0)
+    gastos_operativos = st.number_input("Gastos operativos (S/)", min_value=0.0, value=0.0, step=100.0)
+    impuestos = st.number_input("Impuestos (S/)", min_value=0.0, value=0.0, step=100.0)
